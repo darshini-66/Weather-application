@@ -1,0 +1,190 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+    <center>
+        <h1>Weather App</h1>
+         <form id="myForm">
+<input type="text" placeholder="Enter City" id="info"/>
+
+             <button>Get Weather</button>
+         </form>
+         <div id="display"></div>
+       
+    </center>
+    <Script src="index.js"></Script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather App</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#74ebd5,#9face6);
+}
+
+.container{
+    width:350px;
+     max-width:350px;
+    background:#fff;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+h1{
+    color:#333;
+    margin-bottom:20px;
+}
+
+form{
+    display:flex;
+    gap:10px;
+}
+
+input{
+    flex:1;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    outline:none;
+    font-size:16px;
+}
+
+button{
+    padding:12px 18px;
+    border:none;
+    border-radius:10px;
+    background:#4f46e5;
+    color:white;
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+}
+
+button:hover{
+    background:#3730a3;
+}
+
+#display{
+    margin-top:25px;
+}
+
+.weather-card{
+    background:#f7f9fc;
+    padding:20px;
+    border-radius:15px;
+}
+
+.city{
+    font-size:24px;
+    color:#333;
+    margin-bottom:10px;
+}
+.footer{
+    margin-top:20px;
+    font-size:14px;
+    color:#777;
+}
+
+.footer strong{
+    color:#4f46e5;
+}
+
+.temp{
+    font-size:42px;
+    font-weight:bold;
+    color:#4f46e5;
+}
+@media (max-width:480px){
+    form{
+        flex-direction:column;
+    }
+
+    input,
+    button{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🌤 Weather App</h1>
+
+    <form id="myForm">
+        <input
+            type="text"
+            id="info"
+            placeholder="Enter city name"
+            required
+        >
+        <button type="submit">Search</button>
+    </form>
+<div id="display"></div>
+
+<p class="footer">
+    Designed & Developed by <strong>Darshini Kantam</strong>
+</p>
+</div>
+
+ <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="index.js"></script>
+
+<script>
+const myForm = document.getElementById('myForm');
+
+myForm.addEventListener('submit',(event)=>{
+    event.preventDefault();
+
+    let inputValue = document.getElementById('info').value;
+    let apiKey = "443ae0ae87615415afb2e8b19c81208f";
+
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&appid=${apiKey}&units=metric`)
+    .then(result=>{
+        document.getElementById('display').innerHTML = `
+            <div class="weather-card">
+                <div class="city">${result.data.name}</div>
+                <div class="temp">${result.data.main.temp}°C</div>
+            </div>
+        `;
+    })
+    .catch(()=>{
+        alert('Enter a valid city name');
+    });
+});
+</script>
+
+</body>
+</html>
