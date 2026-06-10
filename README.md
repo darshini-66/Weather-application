@@ -1,6 +1,6 @@
-# 🌤 Blue Sky Breif
+# 🌤 Blue Sky Brief
 
-A simple and responsive weather application called "Blue Sky Breif" built using HTML, CSS, JavaScript, and Axios. The app allows users to search for any city and view its current temperature using real-time weather data from the OpenWeather API.
+A simple and responsive weather application called "Blue Sky Brief" built using HTML, CSS, JavaScript, and Axios. The app allows users to search for any city and view its current temperature using real-time weather data from the OpenWeather API.
 
 ## 🚀 Features
 
